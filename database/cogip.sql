@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Oct 29, 2019 at 03:19 PM
+-- Generation Time: Oct 30, 2019 at 10:14 AM
 -- Server version: 10.4.2-MariaDB-1:10.4.2+maria~bionic
 -- PHP Version: 7.2.5
 
@@ -70,15 +70,15 @@ CREATE TABLE `invoice` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `User`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Indexes for dumped tables
@@ -107,9 +107,9 @@ ALTER TABLE `invoice`
   ADD KEY `invoice_contact_id` (`invoice_contact_id`);
 
 --
--- Indexes for table `User`
+-- Indexes for table `user`
 --
-ALTER TABLE `User`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`) USING BTREE;
 
@@ -136,9 +136,9 @@ ALTER TABLE `invoice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `User`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `User`
+ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
