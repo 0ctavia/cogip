@@ -7,7 +7,7 @@ function valid($type_text){
 		return "champ obligatoire";
 	}
 	else if(!preg_match('`^[a-zA-Z \'\-\.]+$`', htmlspecialchars($type_text))){
-		return "name erro, caractére only pleas.";
+		return "nom incorrecte";
 	}
 	else{
 		return TRUE;
@@ -17,7 +17,7 @@ function valid($type_text){
 
 	//Input type password valid:
 
-	function password_validated($type_password){
+function password_validated($type_password){
 
 	if(empty($type_password)){
 		return "champ obligatoir";
@@ -36,7 +36,7 @@ function valid_email($type_email){
 		return "champ obligatoire";
 	}
 	else if(!filter_var($type_email, FILTER_VALIDATE_EMAIL)){
-		return "error in mail";
+		return "email incorrecte";
 	}
 	else{
 		return TRUE;
@@ -63,7 +63,7 @@ function valid_phone($type_phone){
 }
 
 
-	// Input type invoice:
+	//Input type invoice:
 
 
 
