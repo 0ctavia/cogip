@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Oct 30, 2019 at 10:14 AM
+-- Generation Time: Oct 31, 2019 at 08:24 AM
 -- Server version: 10.4.2-MariaDB-1:10.4.2+maria~bionic
 -- PHP Version: 7.2.5
 
@@ -77,7 +77,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `mode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
