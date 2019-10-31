@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Oct 31, 2019 at 08:24 AM
+-- Generation Time: Oct 31, 2019 at 02:09 PM
 -- Server version: 10.4.2-MariaDB-1:10.4.2+maria~bionic
 -- PHP Version: 7.2.5
 
@@ -63,7 +63,7 @@ CREATE TABLE `invoice` (
   `id` int(11) NOT NULL,
   `number` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `Invoice_company_id` int(11) DEFAULT NULL,
+  `invoice_company_id` int(11) DEFAULT NULL,
   `invoice_contact_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -103,8 +103,8 @@ ALTER TABLE `contact`
 --
 ALTER TABLE `invoice`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `Invoice_company_id` (`Invoice_company_id`),
-  ADD KEY `invoice_contact_id` (`invoice_contact_id`);
+  ADD KEY `invoice_contact_id` (`invoice_contact_id`),
+  ADD KEY `invoice_company_id` (`invoice_company_id`) USING BTREE;
 
 --
 -- Indexes for table `user`
@@ -121,19 +121,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -155,7 +155,7 @@ ALTER TABLE `contact`
 -- Constraints for table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD CONSTRAINT `fk_invoice_company_id` FOREIGN KEY (`Invoice_company_id`) REFERENCES `company` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `fk_invoice_company_id` FOREIGN KEY (`invoice_company_id`) REFERENCES `company` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `fk_invoice_contact_id` FOREIGN KEY (`invoice_contact_id`) REFERENCES `contact` (`id`) ON DELETE SET NULL;
 COMMIT;
 
