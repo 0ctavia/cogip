@@ -1,5 +1,5 @@
 <?php include 'headerview.php' ?>
-<form id="loginform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+<form id="loginform" action="" method="post">
 <label for="username">Votre nom</label>
 <input type="text" name="username" id="username">
 <span class="error"><?php echo $usernameError ?></span>

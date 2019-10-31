@@ -5,41 +5,72 @@
 	//connexion à ma DB || include de ma connexion à ma DB
 
 	//Exemple de connexion:
+function dbconnect(){
 
-//	$servername = "database";
-//	$usernamedb = "root";
-//	$passworddb = "root";
-//	$dbname = "becode";
+	$servername = "database";
+	$usernamedb = "root";
+	$passworddb = "root";
+	$dbname = "cogip";
 
-//	$conn = mysqli_connect($servername, $usernamedb, $passworddb, $dbname);
+	$conn = mysqli_connect($servername, $usernamedb, $passworddb, $dbname);
+	return $conn;
 
-
+}
 	// Check connection
 
 
-	// connexion au profile via mon login  
+	// check si le Login est dans la BD  
 
-function verify_login($login){
+function check_login($login){
 		
-		//$conn = dbconnect();
-		$sql = "SELECT  * FROM user WHERE username='".$login."' limit 1";
+	$connexion = dbconnect();
+			//$conn = dbconnect();
+	$sql = <<<SQL
+	SELECT  * FROM User
+	WHERE username = '$login'
+	limit 1
+SQL;
 
-		$result = mysqli_query($conn, $sql);
-		$resultcheck = mysqli_num_rows($result);
+	$result = mysqli_query($connexion, $sql);
+	$resultcheck = mysqli_num_rows($result);	
+	if($resultcheck == 1){
 		
-		if ($resultcheck == 1){ // Si il y a bien un username dans la DB qui est  == a l'input
-			if(password_verify($password, $row['password'])){ 
-				return TRUE;
-			}
-			else{
-				return FALSE;
-			}
-		}
-		else {
-			return FALSE;
-		} 
-
+		return $resultcheck;
+	}
+	else{
+		return "login non valide";
+	}
 }
 
+
+function show_login($login){
+	$connection = dbconnect();
+
+	$sql = <<<SQL
+	SELECT  * FROM User
+	WHERE username = '$login'
+	limit 1"
+SQL;
+
+	$result = mysqli_query($connection, $sql);
+	$resultcheck = mysqli_num_rows($result);
+
+	if(resultcheck == 1){
+		while($row = mysqli_fetch_assoc($result)){
+				session_start();
+				$_SESSION['username'] = $row['username'];
+		}
+		return $_SESSION['username'];
+	}
+	else{
+		return 'none';
+	}
+ }
+
+
+//function check_password($password){
+///	while($row = mysqli_fetch_assoc($result)){
+//					if($password == password_verify($row['password'])
+//}
 
 ?>
