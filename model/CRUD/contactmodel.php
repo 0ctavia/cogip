@@ -3,9 +3,9 @@
 
 require "../../database/connect.php";
 
-function getLimitedContact(){
+function getLimitedContacts(){
     /*
-        Cette fonction va rechercher les contacts dans la banque de donnée et 
+        Cette fonction va rechercher les derniers contacts encodés dans la banque de donnée et 
         retourne un nombre limité de contacts
     */
     $limited = 5;
@@ -34,8 +34,4 @@ SQL;
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     return $rows;
 }
-
-// echo "<pre>";
-// print_r(getLimitedContact());
-// echo "</pre>";
 ?>

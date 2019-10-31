@@ -6,7 +6,7 @@ require "../../database/connect.php";
 
 function getLimitedCompanies(){
     /*
-        Cette fonction va rechercher les compagnies dans la banque de donnée et 
+        Cette fonction va rechercher les dernières compagnies encodées dans la banque de donnée et 
         retourne un nombre limité de compagnies
     */
     $limited = 5;
@@ -17,7 +17,7 @@ function getLimitedCompanies(){
     //Préparation de la requête
     $sql = <<<SQL
         SELECT id, name, type
-        FROM `company`
+        FROM company
         ORDER BY timestamp DESC
         LIMIT ?
 SQL;
@@ -31,12 +31,7 @@ SQL;
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $rows = $result->fetch_all();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
     return $rows;
 }
-
-// echo "<pre>";
-// print_r(getLimitedCompanies(MYSQLI_ASSOC));
-// echo "</pre>";
-
 ?>
