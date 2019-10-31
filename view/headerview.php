@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <?php if (/*rajouter un truc pour tester qu'on est sur adminview*/) :?> 
+        <?php // if (/*rajouter un truc pour tester qu'on est sur adminview*/) : ?> 
             <!--barre de navigation doit etre include-->
-        <?php endif ?>
+        <?php // endif ?>
     </header>
