@@ -1,0 +1,8 @@
+footer {
+  position: absolute;
+  margin-bottom: calc(100vh-100px); }
+  footer img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle; }
