@@ -51,4 +51,42 @@ footer img {
     margin-right: auto;
     vertical-align: middle; }
 
+/*PARTIE NARV-BAR
+ * --------------*/
+.nav-bar{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 10px;
+	grid-auto-rows: repeat(1,1fr);
+	background-color: #f7b360;
+	height: 75px;
 
+}
+
+.nav-img{
+	grid-column:1;
+	grid-row: 1;
+	height: 100%;
+}
+
+.list {
+	list-style-type: none;
+	grid-column: 2/ span 4;
+	grid-row: 1;
+	margin: 0;
+	overflow: hidden;
+}
+
+li a{
+	float: left;
+	color: 73562a;
+	position-height: auto;
+	display: block;
+	text-align: center;
+	padding: 3% 2%;
+	margin-left:5%;
+	color:#73562a;
+	text-decoration: none;
+	
+
+}
