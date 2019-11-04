@@ -1,5 +1,6 @@
-<?
-	
+<?php
+session_start();
+
 	$url = $_GET['id'];
 	$r = explode('/', $url);
 
@@ -8,7 +9,8 @@
 
 	if($url == 'login'){
 		require "controller/logincontroller.php";
-		good_login();
+        good_login();
+        $_SESSION['bodytag'] ='login';
 	}
 
 // controller page welcome
@@ -16,4 +18,4 @@
 	if($url == 'home'){
 	 echo 'rififi';
 	}
-
+?>

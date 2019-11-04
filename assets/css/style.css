@@ -1,8 +1,54 @@
+body{
+    height:100%;
+}
+
+/*PAGE LOGIN */
+/*-----------*/
+
+#login {
+    background-image: url('https://github.com/0ctavia/cogip/blob/octavia/assets/images/cogipretro.jpeg?raw=true');
+    background-size: cover;
+}
+
+#loginform {
+    position:absolute;
+    margin-top: 45vh;
+    margin-left: 5vw;
+    background-color: white;
+    width: 20vw;
+    height: 30vh;
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content:space-between;
+    padding:10px;
+    border-radius:5px;
+    border: 2px solid #73562a;
+    box-shadow: 3px 3px #c2b27f;
+}
+
+#loginbutton {
+    background-color: #c75c00;
+    font-size:1.2em;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* PARTIE FOOTER */
+/*--------------*/
+
 footer {
-  position: absolute;
-  margin-bottom: calc(100vh-100px); }
-  footer img {
-    display: block;
+    position: absolute ;
+    background-color: #f7b36e;
+    bottom: 0px;
+    width:100%;
+    text-align:center;
+}
+
+
+footer img {
     margin-left: auto;
     margin-right: auto;
     vertical-align: middle; }
+
+

@@ -6,7 +6,6 @@
 <label for="password">Votre mot de passe</label>
 <input type="password" name="password" id="password">
 <span class="error"><?php echo $passwordError ?></span>
-<input type="submit" value="Connexion" name="submit">
+<input id="loginbutton" type="submit" value="Connexion" name="submit">
 </form>
-
 <?php include 'footerview.php' ?>
