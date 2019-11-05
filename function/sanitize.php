@@ -1,13 +1,17 @@
 <?php
-
+//echo "sanitize et validate inclus";
 	//Input type text valid:
+$usernameError = $passwordError = "";
 
-function valid($type_text){
-	if(empty($type_text)){
-		return "champ obligatoire";
+function validateText($type_text){
+echo "fonction validate tourne";
+if(empty($type_text)){
+        $usernameError = "Veuillez remplir votre nom d'utilisateur";
+        return $usernameError;
 	}
 	else if(!preg_match('`^[a-zA-Z \'\-\.]+$`', htmlspecialchars($type_text))){
-		return "nom incorrecte";
+		$usernameError= "Erreur dans le nom d'utilisateur";
+        return $usernameError;
 	}
 	else{
 		return TRUE;
@@ -17,10 +21,10 @@ function valid($type_text){
 
 	//Input type password valid:
 
-function password_validated($type_password){
+function validatePassword($type_password){
 
 	if(empty($type_password)){
-		return "champ obligatoir";
+		$passwordError = "Veuillez remplir un mot de passe";
 	}
 	else{
 		return TRUE;
@@ -30,13 +34,13 @@ function password_validated($type_password){
 	
 	//Input type email valid:
 
-function valid_email($type_email){
+function validateEmail($type_email){
 
 	if(empty($type_email)){
-		return "champ obligatoire";
+		return "Champ obligatoire";
 	}
 	else if(!filter_var($type_email, FILTER_VALIDATE_EMAIL)){
-		return "email incorrecte";
+		return "Adresse email incorrecte";
 	}
 	else{
 		return TRUE;
@@ -46,10 +50,10 @@ function valid_email($type_email){
 
 	//Input number type tel:
 
-function valid_phone($type_phone){
+function validatePhone($type_phone){
 	
 	if(empty($type_phone)){
-		return "champ obligatoire";
+		return "Champ obligatoire";
 	}
 	else if(preg_match("'^(([\+]([\d]{2,}))([0-9\.\-\/\s]{5,})|([0-9\.\-\/\s]{5,}))*$'",
 			htmlspecialchars($type_phone))){

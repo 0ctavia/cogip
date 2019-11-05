@@ -1,24 +1,37 @@
 <?php
 //ce controlleur doit regler le login
-//verifier que les données utilisateur sont bien présentes dans la table username
-include "../function/sanitize.php";
+global $usernameError;
+global $passwordError;
+global $username;
+global $password;
 
-if(isset($_POST[// 'variable du button' ])){
-
-		$username = $_POST['login'];
-		$password = $_POST['password'];
-
-		if(valid($username) == TRUE AND password_valided($password) == TRUE){
-
-			if(verify_login($username) == TRUE){
-
-				//session_start();
-
-				//utilisation des variables SESSION 
-			}
-		}
-		else{
-			// variable Error:
-		}
+function view_login(){
+    require "view/loginview.php";
 }
+
+function verifyLogin(){
+
+    if(isset($_POST['submit'])){
+        require "function/sanitize.php";
+        echo "test" . $_POST['username'];
+
+        if(validateText($_POST['username']) == TRUE AND validatePassword($_POST['password']) == TRUE){
+            require "model/loginmodel.php";
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            //function sql pour voir si l'input est bien dans la DB 
+            checkLogin($username);
+            //Si le le login est correct il doit etre redireger vers le controller welcomecontroller
+            }
+        else {
+            $usernameError = validateText($_POST['username']);
+            view_login();
+        }
+
+    }
+    view_login();
+
+}
+
+
 ?>
