@@ -20,6 +20,12 @@ $urlArray = explode('/', $url);
 
     elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
             require "controller/welcomecontroller.php";
+            $_SESSION['choice'] = 'welcome';
+    }
+
+    elseif($urlArray[0] =='edit') {
+            require "controller/editcontroller.php";
+            $_SESSION['choice'] = 'edit';
     }
 
     elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures') {

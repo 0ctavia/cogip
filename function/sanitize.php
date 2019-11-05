@@ -1,10 +1,14 @@
 <?php
 //echo "sanitize et validate inclus";
 	//Input type text valid:
-$usernameError = $passwordError = "";
+
+
+
+global $usernameError;
+global $passwordError;
+
 
 function validateText($type_text){
-echo "fonction validate tourne";
 if(empty($type_text)){
         $usernameError = "Veuillez remplir votre nom d'utilisateur";
         return $usernameError;

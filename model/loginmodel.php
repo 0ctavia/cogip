@@ -4,33 +4,33 @@ require "./database/connection.php";
 //Fichier pour le model de la page login
 
 	// check si le Login est dans la BD  
-global $username;
-global $password;
+//global $username;
+//global $password;
 
-function checkLogin($login){
+function checkLogin($username, $password){
 	$connection = dbconnect();
-    $username = $_SESSION['username'];
 	$sql = <<<SQL
-	SELECT  * FROM user
-	WHERE username = '$username'
-	limit 1
+	SELECT * FROM user
+	WHERE `username` = ?
+	LIMIT 1
 SQL;
-    echo "CheckLogin effectuée";
-    $result = mysqli_query($connection, $sql);
-    var_dump($result);
-	//$resultcheck = mysqli_num_rows($result);
 
-	if(resultcheck == 1){
-		$row = mysqli_fetch_assoc($result);
-        var_dump($row);
-        if($row['password'] == $password) {
+    $stmt= $connection->prepare($sql);
+    //eviter l'injection SQL
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_all(MYSQLI_ASSOC);
+
+    if(!empty($row)){
+        if($row[0]['password'] == $password) {
             $_SESSION['username'] = $username;
             $_SESSION['isLoggedIn'] = TRUE;
             header("location: home");
         }
     }
 	else{
-		return 'Pas d\'utilisateur trouvé';
+		echo 'Pas d\'utilisateur trouvé';
 	}
  }
 
