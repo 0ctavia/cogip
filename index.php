@@ -1,42 +1,43 @@
 <?php
 session_start();
 
-	$url = $_GET['id'];
-	$urlArray = explode('/', $url);
+global $urlArray;
+
+$url = $_GET['id'];
+$urlArray = explode('/', $url);
 //echo $url;
 //var_dump($urlArray);
 
 // controller page Login 
 
-	if($urlArray[0] == 'login'){
-		require "controller/logincontroller.php";
-        verifyLogin();
-        $_SESSION['bodytag'] ='login';
-	}
+//if ($_SESSION['isLoggedIn'] == TRUE){
 
-    elseif($urlArray[0] =='home'){
-        if (empty($_SESSION['isLoggedIn'])) {
-            require "controller/logincontroller.php";
-        } else {
-            require "controller/welcomecontroller.php";
-        }
-    
-    }
-
-    elseif($urlArray[0] =='compagnies'){
-        //lien vers la page compagnies view all si pas de id
-        //lien vers la page compagnie view one si ID
-    }
-
-    //    if($urlArray[0] =='factures'){}
-    //    if($urlArray[0] =='contacts'){
-    //    if($urlArray[0] ==''){
-    //
-
-    else {
+    if($urlArray[0] == 'login'){
         require "controller/logincontroller.php";
         verifyLogin();
-        echo "Une erreur est survenue, merci de vous reconnecter";
+        $_SESSION['bodytag'] ='login';
+    }
 
-	}
+    elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
+            require "controller/welcomecontroller.php";
+    }
+
+    elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures') {
+        //envoyer vers le controller de consultation si déjà loggé
+            require "controller/consultcontroller.php";
+            consultViewPicker();
+    }
+        //le controlleur de consultation de la db va lui aussi employer le $urlArray afin de chopper les views nécessaires
+
+//    else {
+//        require "controller/welcomecontroller.php";
+//    }
+//}
+else {
+        require "controller/logincontroller.php";
+        verifyLogin();
+        $_SESSION['bodytag'] ='login';
+    }
+
+
 ?>
