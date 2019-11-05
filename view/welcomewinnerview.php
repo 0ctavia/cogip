@@ -13,51 +13,64 @@
 				<a type="submit" class="lien-admin" href="#">Module administrateur</a>
 			</section>
 			<section class="tableaux">
-				<table class="tabFactures">
-					<thead>
-						<tr>
-							<th colspan="2">Factures</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>numéro facture</td>
-							<td>date</td>
-							<td>société</td>
-					    </tr>
-					</tbody>
-				</table>
-				<table class="tabCompagnie">
-					<thead>
-						<tr>
-							<th colspan="2">Compagnie</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>nom de la société</td>
-							<td>Type</td>
-					    </tr>
-					</tbody>
-				</table>
-				<table class="tabContacts">
-					<thead>
-						<tr>
-							<th colspan="2">Conctats</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Nom</td>
-							<td>prénom</td>
-							<td>email</td>
-							<td>numéro factures</td>
-							<td>société</td>
-					    </tr>
-					</tbody>
-				</table>
+				<section class="tabFactures">	
+					<table>
+						<caption>Factures</caption>
+						<thead>
+							<tr>
+								<th>numéro facture</th>
+								<th>date</th>
+								<th>société</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section class="tabCompagnie">	
+					<table>
+						<caption>Compagnie</caption>
+						<thead>	
+							<tr>
+								<th>nom de la société</th>
+								<th>Type</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section class="tabContacts">
+					<table>
+						<caption>Contacts</caption>
+						<thead>
+							<th>Nom</th>
+							<th>prénom</th>
+							<th>email</th>
+							<th>numéro factures</th>
+							<th>société</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
 			</section>
 		</main>
 	</body>
-</html>
-
+</html>	
