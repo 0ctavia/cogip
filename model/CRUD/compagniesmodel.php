@@ -2,7 +2,7 @@
 // Fichier devant contenir les CRUD pour query, modification, suppression du tablea client.
 // Ce fichier doit également permettre de faire des sélections, edit etc. en fonction de la colonne type: client ou fournisseur
 
-require "../../database/connect.php";
+require "../../database/connection.php";
 
 function getLimitedCompanies(){
     /*
@@ -12,7 +12,7 @@ function getLimitedCompanies(){
     $limited = 5;
 
     //Connection avec la base de donnée
-    $conn = connect();
+    $conn = dbconnect();
 
     //Préparation de la requête
     $sql = <<<SQL
@@ -42,7 +42,7 @@ function getAllCompanies(){
     */
 
     //Connection avec la base de donnée
-    $conn = connect();
+    $conn = dbconnect();
 
     //Préparation de la requête
     $sql = <<<SQL
@@ -61,7 +61,7 @@ SQL;
     return $rows;
 }
 
-echo "<pre>";
-print_r(getAllCompanies());
-echo "</pre>";
+// echo "<pre>";
+// print_r(getAllCompanies());
+// echo "</pre>";
 ?>

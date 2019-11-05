@@ -1,9 +1,9 @@
 <?php
 // Fichier devant contenir les CRUD (query, modifications, delete) pour les factures
 
-require "../../database/connect.php";
+require "../../database/connection.php";
 
-function getLimitedInvoices(){
+function getLimitedInvoices($sql){
     /*
         Cette fonction va rechercher les dernières factures encodées dans la banque de donnée et 
         retourne un nombre limité de factures
@@ -11,48 +11,7 @@ function getLimitedInvoices(){
     $limited = 5;
 
     //Connection avec la base de donnée
-    $conn = connect();
-
-    //Préparation de la requête
-    $sql = <<<SQL
-        SELECT invoice.id, number, name AS company
-        FROM invoice
-        LEFT JOIN company ON company.id = invoice_company_id
-        ORDER BY invoice.timestamp DESC
-        LIMIT ?
-SQL;
-
-    $stmt = $conn->prepare($sql);
-
-    //éviter injection sql
-    $stmt->bind_param('s', $limited);
-
-    //exécute et récupération des données
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $rows = $result->fetch_all(MYSQLI_ASSOC);
-    return $rows;
-}
-
-function getEditedInvoices(){
-    /*
-        Cette fonction va rechercher les dernières factures encodées dans la banque de donnée pour l'édition et 
-        retourne un nombre limité de factures
-    */
-    $limited = 5;
-
-    //Connection avec la base de donnée
-    $conn = connect();
-
-    //Préparation de la requête
-    $sql = <<<SQL
-        SELECT invoice.id, number, invoice.timestamp, name AS company
-        FROM invoice
-        LEFT JOIN company ON company.id = invoice_company_id
-        ORDER BY invoice.timestamp DESC
-        LIMIT ?
-SQL;
+    $conn = dbconnect();  
 
     $stmt = $conn->prepare($sql);
 
@@ -74,7 +33,7 @@ function getAllInvoices(){
     */
 
     //Connection avec la base de donnée
-    $conn = connect();
+    $conn = dbconnect();
 
     //Préparation de la requête
     $sql = <<<SQL
@@ -94,7 +53,40 @@ SQL;
     return $rows;
 }
 
+function limitedInvoices($choice){
+    /*
+        cette fonction crée la requête nécéssaire à un vue en particulier et
+        retourne la liste des factures
+    */
+
+    $sql;
+    switch ($choice) {
+        case 'welcome':
+            //Préparation de la requête du welcome
+            $sql = <<<SQL
+                SELECT invoice.id, number, name AS company
+                FROM invoice
+                LEFT JOIN company ON company.id = invoice_company_id
+                ORDER BY invoice.timestamp DESC
+                LIMIT ?
+SQL;
+            break;
+        case 'edit':
+            //Préparation de la requête de l'éditeur
+            $sql = <<<SQL
+                SELECT invoice.id, number, invoice.timestamp, name AS company
+                FROM invoice
+                LEFT JOIN company ON company.id = invoice_company_id
+                ORDER BY invoice.timestamp DESC
+                LIMIT ?
+SQL;
+            break;
+    }
+
+    return getLimitedInvoices($sql);
+}
+
 echo "<pre>";
-print_r(getEditedInvoices());
+print_r(limitedInvoices('edit'));
 echo "</pre>";
 ?>
