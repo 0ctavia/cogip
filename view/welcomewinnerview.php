@@ -1,4 +1,7 @@
-<?php include "loginview.php"?>
+<?php 
+	include "headerview.php";
+	include "navbarview.php";
+?>
 <main id="main">
 			<section class="text">
 				<h1>Bienvenue $username</h1>
@@ -13,51 +16,69 @@
 				<a type="submit" class="lien-admin" href="#">Module administrateur</a>
 			</section>
 			<section class="tableaux">
-				<table class="tabFactures">
-					<thead>
-						<tr>
-							<th colspan="2">Factures</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>numéro facture</td>
-							<td>date</td>
-							<td>société</td>
-					    </tr>
-					</tbody>
-				</table>
-				<table class="tabCompagnie">
-					<thead>
-						<tr>
-							<th colspan="2">Compagnie</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>nom de la société</td>
-							<td>Type</td>
-					    </tr>
-					</tbody>
-				</table>
-				<table class="tabContacts">
-					<thead>
-						<tr>
-							<th colspan="2">Conctats</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Nom</td>
-							<td>prénom</td>
-							<td>email</td>
-							<td>numéro factures</td>
-							<td>société</td>
-					    </tr>
-					</tbody>
-				</table>
+				<section class="tabFactures">	
+					<table>
+						<caption>Factures</caption>
+						<thead>
+							<tr>
+								<th>numéro facture</th>
+								<th>date</th>
+								<th>société</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($invoiceList as $invoice){
+								echo "<tr>";
+								foreach($invoice as $key => $value){
+
+									if ($key != 'id') echo "<td>$value</td>";
+								}
+								echo '</tr>';
+							}?>
+						</tbody>
+					</table>
+				</section>
+				<section class="tabCompagnie">	
+					<table>
+						<caption>Compagnie</caption>
+						<thead>	
+							<tr>
+								<th>nom de la société</th>
+								<th>Type</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($companyList as $company){
+								echo "<tr>";
+								foreach ($company as $key => $value) {
+									if ($key != 'id') echo "<td>$value</td>";
+								}
+								echo "</tr>";
+							}?>
+						</tbody>
+					</table>
+				</section>
+				<section class="tabContacts">
+					<table>
+						<caption>Contacts</caption>
+						<thead>
+							<th>Nom</th>
+							<th>prénom</th>
+							<th>email</th>
+							<th>société</th>
+						</thead>
+						<tbody>
+							<?php foreach($contactList as $contact){
+								echo "<tr>";
+								foreach ($contact as $key => $value) {
+									if ($key != 'id') echo "<td>$value</td>";
+								}
+								echo "</tr>";
+							}?>
+						</tbody>
+					</table>
+				</section>
 			</section>
 		</main>
 	</body>
-</html>
-
+</html>	

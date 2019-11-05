@@ -1,8 +1,6 @@
 <?php
 // Fichier devant contenir les différentes fonctions pour faire les query, les modifications et les delete sur la table contact.
 
-require "../../database/connect.php";
-
 function getLimitedContacts(){
     /*
         Cette fonction va rechercher les derniers contacts encodés dans la banque de donnée et 
@@ -11,11 +9,11 @@ function getLimitedContacts(){
     $limited = 5;
 
     //Connection avec la base de donnée
-    $conn = connect();
+    $conn = dbconnect();
 
     //Préparation de la requête
     $sql = <<<SQL
-        SELECT contact.id, firstname, lastname, name AS company
+        SELECT contact.id, firstname, lastname, email, name AS company
         FROM contact
         LEFT JOIN company ON company.id = contact.contact_company_id
         ORDER BY contact.timestamp DESC
@@ -34,4 +32,8 @@ SQL;
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     return $rows;
 }
+
+// echo "<pre>";
+// print_r(limitedContact('welcome'));
+// echo "</pre>";
 ?>
