@@ -113,7 +113,7 @@ li a{
 .admin{
 	border-style: solid;
 	border-color: black;
-	grid-columns: 6
+	grid-column: 6;
 
 }
 .tableaux{
@@ -137,7 +137,7 @@ button a{
 }
 .tabFactures{
 	grid-column: 1/span 3;
-	grid-row: 1/6);
+	grid-row: 1/6;
 }
 .tabCompagnie{
 	grid-column: 4/ 8;

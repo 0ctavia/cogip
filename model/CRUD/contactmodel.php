@@ -1,9 +1,7 @@
 <?php
 // Fichier devant contenir les différentes fonctions pour faire les query, les modifications et les delete sur la table contact.
 
-require "../../database/connection.php";
-
-function getLimitedContacts($sql){
+function getLimitedContacts(){
     /*
         Cette fonction va rechercher les derniers contacts encodés dans la banque de donnée et 
         retourne un nombre limité de contacts
@@ -12,6 +10,15 @@ function getLimitedContacts($sql){
 
     //Connection avec la base de donnée
     $conn = dbconnect();
+
+    //Préparation de la requête
+    $sql = <<<SQL
+        SELECT contact.id, firstname, lastname, email, name AS company
+        FROM contact
+        LEFT JOIN company ON company.id = contact.contact_company_id
+        ORDER BY contact.timestamp DESC
+        LIMIT ?
+SQL;
 
     $stmt = $conn->prepare($sql);
 
@@ -24,39 +31,6 @@ function getLimitedContacts($sql){
 
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     return $rows;
-}
-
-function limitedContact($choice){
-    /*
-        cette fonction crée la requête nécéssaire à un vue en particulier et
-        retourne la liste des contacts
-    */
-
-    $sql;
-    switch ($choice) {
-        case 'welcome':
-            //Préparation de la requête du welcome
-            $sql = <<<SQL
-                SELECT contact.id, firstname, lastname, name AS company
-                FROM contact
-                LEFT JOIN company ON company.id = contact.contact_company_id
-                ORDER BY contact.timestamp DESC
-                LIMIT ?
-SQL;
-            break;
-        case 'edit':
-            //Préparation de la requête
-            $sql = <<<SQL
-                SELECT contact.id, firstname, lastname, email, name AS company
-                FROM contact
-                LEFT JOIN company ON company.id = contact.contact_company_id
-                ORDER BY contact.timestamp DESC
-                LIMIT ?
-SQL;
-            break;
-    }
-
-    return getLimitedContacts($sql);
 }
 
 // echo "<pre>";

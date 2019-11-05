@@ -1,9 +1,7 @@
 <?php
 // Fichier devant contenir les CRUD (query, modifications, delete) pour les factures
 
-require "../../database/connection.php";
-
-function getLimitedInvoices($sql){
+function getLimitedInvoices(){
     /*
         Cette fonction va rechercher les dernières factures encodées dans la banque de donnée et 
         retourne un nombre limité de factures
@@ -11,7 +9,16 @@ function getLimitedInvoices($sql){
     $limited = 5;
 
     //Connection avec la base de donnée
-    $conn = dbconnect();  
+    $conn = dbconnect();
+
+    //Préparation de la requête de l'éditeur
+    $sql = <<<SQL
+        SELECT invoice.id, number, invoice.timestamp, name AS company
+        FROM invoice
+        LEFT JOIN company ON company.id = invoice_company_id
+        ORDER BY invoice.timestamp DESC
+        LIMIT ?
+SQL;
 
     $stmt = $conn->prepare($sql);
 
@@ -53,40 +60,7 @@ SQL;
     return $rows;
 }
 
-function limitedInvoices($choice){
-    /*
-        cette fonction crée la requête nécéssaire à un vue en particulier et
-        retourne la liste des factures
-    */
-
-    $sql;
-    switch ($choice) {
-        case 'welcome':
-            //Préparation de la requête du welcome
-            $sql = <<<SQL
-                SELECT invoice.id, number, name AS company
-                FROM invoice
-                LEFT JOIN company ON company.id = invoice_company_id
-                ORDER BY invoice.timestamp DESC
-                LIMIT ?
-SQL;
-            break;
-        case 'edit':
-            //Préparation de la requête de l'éditeur
-            $sql = <<<SQL
-                SELECT invoice.id, number, invoice.timestamp, name AS company
-                FROM invoice
-                LEFT JOIN company ON company.id = invoice_company_id
-                ORDER BY invoice.timestamp DESC
-                LIMIT ?
-SQL;
-            break;
-    }
-
-    return getLimitedInvoices($sql);
-}
-
-echo "<pre>";
-print_r(limitedInvoices('edit'));
-echo "</pre>";
+// echo "<pre>";
+// print_r(limitedInvoices('edit'));
+// echo "</pre>";
 ?>

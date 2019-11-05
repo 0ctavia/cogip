@@ -21,6 +21,7 @@ $urlArray = explode('/', $url);
     elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
             require "controller/welcomecontroller.php";
             $_SESSION['choice'] = 'welcome';
+            $_SESSION['bodytag'] = '';
     }
 
     elseif($urlArray[0] =='edit') {

@@ -1,4 +1,7 @@
-<?php include "loginview.php"?>
+<?php 
+	include "headerview.php";
+	include "navbarview.php";
+?>
 <main id="main">
 			<section class="text">
 				<h1>Bienvenue $username</h1>
@@ -24,11 +27,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+							<?php foreach($invoiceList as $invoice){
+								echo "<tr>";
+								foreach($invoice as $key => $value){
+
+									if ($key != 'id') echo "<td>$value</td>";
+								}
+								echo '</tr>';
+							}?>
 						</tbody>
 					</table>
 				</section>
@@ -42,10 +48,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-							</tr>
+							<?php foreach($companyList as $company){
+								echo "<tr>";
+								foreach ($company as $key => $value) {
+									if ($key != 'id') echo "<td>$value</td>";
+								}
+								echo "</tr>";
+							}?>
 						</tbody>
 					</table>
 				</section>
@@ -56,17 +65,16 @@
 							<th>Nom</th>
 							<th>prénom</th>
 							<th>email</th>
-							<th>numéro factures</th>
 							<th>société</th>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+							<?php foreach($contactList as $contact){
+								echo "<tr>";
+								foreach ($contact as $key => $value) {
+									if ($key != 'id') echo "<td>$value</td>";
+								}
+								echo "</tr>";
+							}?>
 						</tbody>
 					</table>
 				</section>
