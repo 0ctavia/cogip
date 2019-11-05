@@ -95,6 +95,8 @@ li a{
  *
  * -----------------*/
 
+/*body style*/
+
 #main{
 	 display: grid;
 	 grid-template-columns: repeat(6, 1fr);
@@ -113,11 +115,8 @@ li a{
 .admin{
 	border-style: solid;
 	border-color: black;
-	grid-column: 6;
+	grid-columns: 6
 
-}
-.tableaux{
-	width: auto;
 }
 button{
 	width:auto;
@@ -126,31 +125,17 @@ button a{
 	text-decoration: none;
 }
 .tableaux{
-	grid-column: 1/ span 6;
-	grid-row: 2/ span 5;
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	grid-gap: 10px;
-	grid-auto-rows:repeat(6,1fr);
+	grid-column: 1/6;
+	display: block;
+	flex-direction : column;
 	margin-top:25px;
+}
 
-}
-.tabFactures{
-	grid-column: 1/span 3;
-	grid-row: 1/6;
-}
-.tabCompagnie{
-	grid-column: 4/ 8;
-	grid-row: 1/ span 4;
-}
-.tabContacts{
-	grid-column: 8/ 13;
-	grid-row: 1/ span 4;
-}
 
 table{
-	position:fixed;
-	left: auto;
+	margin-top:25px;
+	margin-left: auto;
+	margin-right: auto;
 }
 thead{
 	text-align: center;
@@ -163,4 +148,5 @@ td{
 tr{
 	padding: 15px;
 }
+
 
