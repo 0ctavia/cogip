@@ -1,5 +1,5 @@
 <?php
-echo "Ceci est le welcome / home controller"
+echo "Ceci est le welcome / home controller";
 echo $_SESSION['username'];
 //ceci est un gros controller qui doit récupérer des tas d'infos des CRUD que nous avons
 //notamment les 5 derniers contacts, les 5 dernières factures etc
