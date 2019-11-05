@@ -9,7 +9,7 @@
 				</p>
 			</section>
 			<section class="admin">
-				<img class="acceuil-img" src="https://picsum.photos/400/300"/>
+				<img class="acceuil-img" src="assets/images/ranu.jpeg"/>
 				<a type="submit" class="lien-admin" href="#">Module administrateur</a>
 			</section>
 			<section class="tableaux">
