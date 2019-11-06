@@ -2,8 +2,6 @@
 // Fichier devant contenir les CRUD pour query, modification, suppression du tablea client.
 // Ce fichier doit également permettre de faire des sélections, edit etc. en fonction de la colonne type: client ou fournisseur
 
-require "../../database/connection.php";
-
 function getLimitedCompanies(){
     /*
         Cette fonction va rechercher les dernières compagnies encodées dans la banque de donnée et 
@@ -48,7 +46,7 @@ function getAllCompanies(){
     $sql = <<<SQL
         SELECT id, name, country, type, vat
         FROM company
-        ORDER BY type, name ASC
+        ORDER BY name ASC
 SQL;
 
     $stmt = $conn->prepare($sql);

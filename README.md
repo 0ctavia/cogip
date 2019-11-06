@@ -27,3 +27,15 @@ Le projet doit être réalisé en 9 jours.
 - Les requêtes SQL pour les consultations de la banque de données sont créées par Nicolas.
 - Jeason mets au point le router
 - Octavia commence le front-end
+
+### Quatrième journée
+- Jeason travaille sur le front end pour la view home/welcome
+- Octavia debugge certains aspects du login et continue à travailler sur le router
+- Nicolas est absent
+
+### Cinquième journée
+*Lors de cette journée la décision est prise de ne pas insister sur les query et view pour la consultation, mais de bifurquer vers le module d'édition, qui nous permettra de nous familiariser avec le CRUD.*
+
+- Nicolas continue sur les query et les models
+- Des conflits au niveau des variables globales, du router / controllers et des fonctions sont gérés par Octavia
+- Jeason continue le travail sur le front end et l'affichage des query
