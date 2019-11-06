@@ -5,7 +5,6 @@ require "model/CRUD/invoicemodel.php";
 require "model/CRUD/compagniesmodel.php";
 require "model/CRUD/contactmodel.php";
 
-echo $_SESSION['username'];
 //ceci est un gros controller qui doit récupérer des tas d'infos des CRUD que nous avons
 //notamment les 5 derniers contacts, les 5 dernières factures etc
 //envoyer ça dans le view welcome

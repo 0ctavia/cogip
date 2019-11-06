@@ -4,7 +4,7 @@
 ?>
 <main id="main">
 			<section class="text">
-				<h1>Bienvenue $username</h1>
+				<h1>Bienvenue <?php echo $_SESSION['username'];?></h1>
 				<p>
 					Vous vous trouvez dans l'interface de la banque de données de la COGIP, 
 					consultez les éléments les plus récents ci-dessous ou utilisez le menu
