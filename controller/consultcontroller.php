@@ -21,6 +21,14 @@ function consultViewPicker($choice){
 			require "model/CRUD/contactmodel.php";
 			$list = getAllContact();
 			break;
+		case "fournisseurs":
+			require "model/CRUD/compagniesmodel.php";
+			$list = getTypedCompanies("fournisseur");
+			break;
+		case "clients":
+			require "model/CRUD/compagniesmodel.php";
+			$list = getTypedCompanies('client');
+			break;
 	}
 	require "view/consultallview.php";
 };
