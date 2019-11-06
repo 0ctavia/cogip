@@ -47,7 +47,7 @@ function getAllContact(){
         SELECT contact.id, firstname, lastname, phone, email, name AS company
         FROM contact
         LEFT JOIN company ON company.id = contact.contact_company_id
-        ORDER BY contact.lastname DESC
+        ORDER BY contact.lastname ASC
 SQL;
 
     $stmt = $conn->prepare($sql);

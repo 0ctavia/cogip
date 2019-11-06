@@ -34,31 +34,31 @@ function addColumn($list){
 			switch ($key){
 				case 'name':
 				case 'company':
-					echo "<th>Nom de la compagnie</>";
+					echo "<th>Nom de la compagnie</th>";
 					break;
 				case 'number':
-					echo "<th>Numéro de facture</>";
+					echo "<th>Numéro de facture</th>";
 					break;
 				case 'timestamp':
-					echo "<th>Date</>";
+					echo "<th>Date</th>";
 					break;
 				case 'type':
-					echo "<th>Type</>";
+					echo "<th>Type</th>";
 					break;
 				case 'vat':
-					echo "<th>TVA</>";
+					echo "<th>TVA</th>";
 					break;
 				case 'country':
-					echo "<th>Pays</>";
+					echo "<th>Pays</th>";
 					break;
 				case 'firstname':
-					echo "<th>Prénom</>";
+					echo "<th>Prénom</th>";
 					break;
 				case 'lastname':
-					echo "<th>Nom de famille</>";
+					echo "<th>Nom de famille</th>";
 					break;
 				case 'email':
-					echo "<th>Email</>";
+					echo "<th>Email</th>";
 					break;
 				case 'phone':
 					echo "<th>Téléphone</th>";
