@@ -30,11 +30,11 @@ elseif($urlArray[0] =='edit') {
 
 }
 
-elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures') {
+elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures' OR $urlArray[0]=='contacts') {
     //envoyer vers le controller de consultation si déjà loggé
     $_SESSION['bodytag']="";
     require "controller/consultcontroller.php";
-    consultViewPicker();
+    consultViewPicker($urlArray[0]);
 }
 //le controlleur de consultation de la db va lui aussi employer le $urlArray afin de chopper les views nécessaires
 
