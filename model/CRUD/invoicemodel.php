@@ -60,7 +60,86 @@ SQL;
     return $rows;
 }
 
+function getInvoice($id){
+    /*
+        Cette fonction va rechercher une facture dans la banque de donnée
+        $id est la facture recherchée dans la banque de donnée
+        retourne une liste détailant la facture
+    */
+
+    //Connection avec la base de donnée
+    $conn = dbconnect();
+
+    //Préparation de la requête
+    $sql = <<<SQL
+        SELECT I.id, I.number, I.timestamp, name, type, firstname, lastname, phone, email
+        FROM invoice I
+        LEFT JOIN company ON company.id = invoice_company_id
+        LEFT JOIN contact ON contact.id = invoice_contact_id
+        WHERE I.id = ?
+SQL;
+
+    $stmt = $conn->prepare($sql);
+
+    //éviter injection sql
+    $stmt->bind_param('i', $id);
+
+    //exécute et récupération des données
+    $stmt->execute();
+    $data = $stmt->get_result();
+
+    $invoice = $data->fetch_assoc();
+    if (!empty($invoice)){
+        $result = array(
+            'id' => '',
+            'number' => '',
+            'timestamp' => '',
+            'company' => array(
+                'name' => '',
+                'type' => ''
+            ),
+            'contact' => array(
+                'firstname' => '',
+                'lastname' => '',
+                'phone' => '',
+                'email' => ''
+            )
+        );
+        
+        foreach($invoice as $key => $value){
+            switch ($key) {
+                case 'name':
+                case 'type':
+                    $result['company'][$key] = $value;
+                    break;
+                case 'id':
+                case 'number':
+                case 'timestamp':
+                    $result[$key] = $value;
+                    break;
+                default:
+                    $result['contact'][$key] = $value;
+            }
+        }
+        return $result;
+    }
+    
+}
+
+
+// switch ($key){
+//     case 'number':
+//         echo "<th>numéro</th>";
+//     case 'timestamp':
+//         echo "<th>date</th>";
+//     case 'name':
+//     case 'company':
+//         echo "<th>Nom de la compagnie</th>";
+//     case 'vat':
+//         echo "<th>TVA</th>";
+// }
+
 // echo "<pre>";
-// print_r(getLimitedInvoices());
+// print_r(getInvoice(6));
 // echo "</pre>";
 ?>
