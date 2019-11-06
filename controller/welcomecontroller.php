@@ -1,6 +1,6 @@
 <?php
-require "database/connection.php";
 
+require "database/connection.php";
 require "model/CRUD/invoicemodel.php";
 require "model/CRUD/compagniesmodel.php";
 require "model/CRUD/contactmodel.php";

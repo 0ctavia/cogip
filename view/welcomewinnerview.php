@@ -48,13 +48,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($companyList as $company){
+						<?php foreach($companyList as $company){
 								echo "<tr>";
 								foreach ($company as $key => $value) {
 									if ($key != 'id') echo "<td>$value</td>";
 								}
 								echo "</tr>";
 							}?>
+
 						</tbody>
 					</table>
 				</section>
