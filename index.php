@@ -13,8 +13,6 @@ if($urlArray[0] == 'login'){
     $_SESSION['bodytag'] ='login';
     require "controller/logincontroller.php";
     verifyLogin();
-
-
 }
 
 elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){

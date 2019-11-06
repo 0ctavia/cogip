@@ -1,13 +1,20 @@
 <?php
-//echo "sanitize et validate inclus";
-	//Input type text valid:
 
-
-
+//variables qui vont permettre de signaler une erreur sur la page de login
 global $usernameError;
 global $passwordError;
 
+}
+//Fonction pour sanitizer l'input
+ function filter($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+ }
 
+//fonctions pour valider les input par type
+//TEXTE
 function validateText($type_text){
 if(empty($type_text)){
         $usernameError = "Veuillez remplir votre nom d'utilisateur";
@@ -23,7 +30,7 @@ if(empty($type_text)){
 }
 
 
-	//Input type password valid:
+//MOT DE PASSE 
 
 function validatePassword($type_password){
 
@@ -36,8 +43,7 @@ function validatePassword($type_password){
 }
 
 	
-	//Input type email valid:
-
+//EMAIL
 function validateEmail($type_email){
 
 	if(empty($type_email)){
@@ -52,8 +58,7 @@ function validateEmail($type_email){
 }
 
 
-	//Input number type tel:
-
+//TELEPHONE
 function validatePhone($type_phone){
 	
 	if(empty($type_phone)){
@@ -71,8 +76,7 @@ function validatePhone($type_phone){
 }
 
 
-	//Input type invoice:
-
+// FACTURES à créer?
 
 
 
