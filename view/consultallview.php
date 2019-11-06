@@ -1,27 +1,28 @@
-
-<html>
+<?php 
+	include "headerview.php";
+	include "navbarview.php";
+?>
 	<head>
-		<title></title>
-	</head>
-	<body>
-		<table border="1">
+	
+		<h1 class="ContactviewAll" >COGiP: <?= ucfirst($url)?></h1>
+
+		<table>
+			<caption>Tous les <?= $url ?></caption>
 			<thead>
-				<th>N°</th>
+				<th>Nom</th>
+				<th>Télephone</th>
+				<th>Email</th>
 				<th>Compagnie</th>
-				<th>Pays</th>
-				<th>Tva</th>
-				<th>type</th>
-				<th>Date d'entrée</th>
 			</thead>
 			<tbody>
-				<?php
-					require("../model/loginmodel.php");
-					$connect = dbconnect();
-					
-
-				?>
-				
+				<?php 
+					foreach($list as $company){
+								echo "<tr>";
+								foreach ($company as $key => $value) {
+									if ($key != 'id') echo "<td>$value</td>";
+								}
+								echo "</tr>";
+					}?>	
 			</tbody>
+	
 		</table>
-	</body>
-</html>
