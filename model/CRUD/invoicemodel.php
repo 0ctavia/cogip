@@ -61,6 +61,6 @@ SQL;
 }
 
 // echo "<pre>";
-// print_r(limitedInvoices('edit'));
+// print_r(getLimitedInvoices());
 // echo "</pre>";
 ?>

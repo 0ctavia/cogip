@@ -46,7 +46,7 @@ function getAllCompanies(){
     $sql = <<<SQL
         SELECT id, name, country, type, vat
         FROM company
-        ORDER BY type, name ASC
+        ORDER BY name ASC
 SQL;
 
     $stmt = $conn->prepare($sql);
