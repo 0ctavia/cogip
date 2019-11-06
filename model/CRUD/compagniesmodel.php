@@ -59,6 +59,37 @@ SQL;
     return $rows;
 }
 
+function getTypedCompanies($type){
+    /*
+        Cette fonction va rechercher tous les compagnies d'un type spécifique dans la banque de donnée,
+        $type est  le type spécifique de la compagnie
+        retourne une liste des compagnies recherchées
+    */
+
+    //Connection avec la base de donnée
+    $conn = dbconnect();
+
+    //Préparation de la requête
+    $sql = <<<SQL
+        SELECT id, name, country, vat
+        FROM company
+        WHERE type = ?
+        ORDER BY name ASC
+SQL;
+
+    $stmt = $conn->prepare($sql);
+
+    //éviter injection sql
+    $stmt->bind_param('s', $type);
+
+    //exécute et récupération des données
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    return $rows;
+}
+
 // echo "<pre>";
 // print_r(getAllCompanies());
 // echo "</pre>";
