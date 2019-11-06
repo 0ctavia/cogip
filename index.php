@@ -3,11 +3,8 @@ session_start();
 
 $url = $_GET['id'];
 $urlArray = explode('/', $url);
-//echo $url;
-//var_dump($urlArray);
 
-// controller page Login 
-
+//LA PARTIE CI-DESSOUS RESTE COMMENTEE JUSQU'AU PASSAGE LIVE
 //if ($_SESSION['isLoggedIn'] == TRUE){
 if($urlArray[0] == 'login'){
     $_SESSION['bodytag'] ='login';
@@ -16,6 +13,8 @@ if($urlArray[0] == 'login'){
 }
 
 elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
+    //controlleur de la page welcome ou home
+    //la variable ci-dessous permet de definir le type de query ds le model
     $_SESSION['choice'] = 'welcome';
     $_SESSION['bodytag'] = '';
     require "controller/welcomecontroller.php";
@@ -23,19 +22,25 @@ elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
 }
 
 elseif($urlArray[0] =='edit') {
+    //controlleur du module d'édition aussi appelé dashboard
     require "controller/editcontroller.php";
+    //la variable ci-dessous permet de definir le type de query ds le model
     $_SESSION['choice'] = 'edit';
 
 }
 
-elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures') {
-    //envoyer vers le controller de consultation si déjà loggé
+elseif($urlArray[0] =='compagnies' AND (!empty($urlArray[1]))) {
+    //envoyer vers le controlleur pour les requetes single
     $_SESSION['bodytag']="";
-    require "controller/consultcontroller.php";
-    consultViewPicker();
+    require "controller/consultcontrollerone.php";
 }
-//le controlleur de consultation de la db va lui aussi employer le $urlArray afin de chopper les views nécessaires
 
+elseif ($urlArray[0] =='compagnies' AND (empty($urlArray[1]))){
+    //envoyer vers le controlleur pour les requestes type ALL
+    $_SESSION['bodytag']="";
+    require "controller/consultcontrollerall.php";
+}
+// LA PARTIE CI-DESSOUS RESTE COMMENTEE JUSQU'A PASSAGE LIVE
 //    else {
 //        require "controller/welcomecontroller.php";
 //    }
