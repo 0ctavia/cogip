@@ -12,19 +12,15 @@
 				<?php
 					addColumn($list);
 				?>
-				<!-- <th>Nom</th>
-				<th>Télephone</th>
-				<th>Email</th>
-				<th>Compagnie</th> -->
 			</thead>
 			<tbody>
 				<?php 
 					foreach($list as $company){
-								echo "<tr>";
-								foreach ($company as $key => $value) {
-									if ($key != 'id') echo "<td>$value</td>";
-								}
-								echo "</tr>";
+						echo "<tr>";
+						foreach ($company as $key => $value) {
+							if ($key != 'id') echo "<td>$value</td>";
+						}
+						echo "</tr>";
 					}?>	
 			</tbody>
 	
