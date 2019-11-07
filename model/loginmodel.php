@@ -26,6 +26,7 @@ SQL;
         if($row[0]['password'] == $password) {
             $_SESSION['username'] = $username;
             $_SESSION['isLoggedIn'] = TRUE;
+            $_SESSION['mode'] = $row[0]['mode'];
             header("location: home");
         }
     }

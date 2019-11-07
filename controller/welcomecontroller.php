@@ -14,9 +14,5 @@ $invoiceList = getLimitedInvoices();
 $companyList = getLimitedCompanies();
 $contactList = getLimitedContacts();
 
-// echo "<pre>";
-// print_r($invoice);
-// echo "</pre>";
-
 require "view/welcomewinnerview.php";
 ?>

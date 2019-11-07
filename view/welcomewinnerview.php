@@ -11,10 +11,13 @@
 					ci dessus pour accéder à une liste de tous les éléments.
 				</p>
 			</section>
+			<?php if ($_SESSION['mode'] == 'winner' OR $_SESSION['mode'] == 'admin') {?>
 			<section class="admin">
 				<img class="acceuil-img" src="assets/images/ranu.jpeg"/>
 				<a type="submit" class="lien-admin" href="#">Module administrateur</a>
 			</section>
+			<?php } ?>
+			
 			<section class="tableaux">
 				<section class="tabFactures">	
 					<table>
