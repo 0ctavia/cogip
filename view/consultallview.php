@@ -1,12 +1,8 @@
 <?php 
 	include "headerview.php";
 	include "navbarview.php";
-<<<<<<< HEAD
-?>	
-=======
 ?>
 	
->>>>>>> ee223c2e763cd6b799bc3a4ff3572fecdf609460
 		<h1 class="ContactviewAll" >COGiP: <?= ucfirst($choice)?></h1>
 
 		<table>
@@ -33,17 +29,14 @@
                             elseif ($key == 'number'){
                                 echo "<td><a href=".$choice."/".$element['id']."</a></td>";
                             }
+						
+						}
 						echo "</tr>";
-                        }
                     }
                      ?>	
 			</tbody>
 	
 		</table>
-<<<<<<< HEAD
-<?php include "footerview.php"; ?>
-=======
 <?php 
     include "footerview.php";
 ?>
->>>>>>> ee223c2e763cd6b799bc3a4ff3572fecdf609460
