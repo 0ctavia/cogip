@@ -16,4 +16,4 @@
             <!--barre de navigation doit etre include-->
         <?php // endif ?>
 		
-	    </header>
+    </header>

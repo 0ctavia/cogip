@@ -7,5 +7,6 @@
 		<li><a href="contacts">Contacts</a></li>
 		<li><a href="clients">Clients</a></li>
 		<li><a href="fournisseurs">Fourniseurs</a></li>
+		<!-- <li><a href="logout">Déconnexion</a></li> -->
 	</ul>
 </section>

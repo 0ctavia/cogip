@@ -81,7 +81,7 @@ footer img {
 li a{
 	float: left;
 	color: 73562a;
-	position-height: auto;
+	height: auto;
 	display: block;
 	text-align: center;
 	padding: 3% 2%;
