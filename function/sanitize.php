@@ -4,7 +4,7 @@
 global $usernameError;
 global $passwordError;
 
-}
+
 //Fonction pour sanitizer l'input
  function filter($data) {
    $data = trim($data);
