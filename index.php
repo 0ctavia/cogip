@@ -29,16 +29,11 @@ elseif($urlArray[0] =='edit') {
 
 }
 
-elseif($urlArray[0] =='compagnies' AND (!empty($urlArray[1]))) {
-    //envoyer vers le controlleur pour les requetes single
+elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures' OR $urlArray[0]=='contacts' OR $urlArray[0]=='clients' OR $urlArray[0]=='fournisseurs') {
+    //envoyer vers le controller de consultation si déjà loggé
     $_SESSION['bodytag']="";
-    require "controller/consultcontrollerone.php";
-}
-
-elseif ($urlArray[0] =='compagnies' AND (empty($urlArray[1]))){
-    //envoyer vers le controlleur pour les requestes type ALL
-    $_SESSION['bodytag']="";
-    require "controller/consultcontrollerall.php";
+    require "controller/consultcontroller.php";
+    consultViewPicker($urlArray[0]);
 }
 // LA PARTIE CI-DESSOUS RESTE COMMENTEE JUSQU'A PASSAGE LIVE
 //    else {

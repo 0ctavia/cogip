@@ -4,15 +4,18 @@
 ?>
 	<head>
 	
-		<h1 class="ContactviewAll" >COGiP: <?= ucfirst($url)?></h1>
+		<h1 class="ContactviewAll" >COGiP: <?= ucfirst($choice)?></h1>
 
 		<table>
-			<caption>Tous les <?= $url ?></caption>
+			<caption>Tous les <?= $choice ?></caption>
 			<thead>
-				<th>Nom</th>
+				<?php
+					addColumn($list);
+				?>
+				<!-- <th>Nom</th>
 				<th>Télephone</th>
 				<th>Email</th>
-				<th>Compagnie</th>
+				<th>Compagnie</th> -->
 			</thead>
 			<tbody>
 				<?php 
