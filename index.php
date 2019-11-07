@@ -15,7 +15,7 @@ if($urlArray[0] == 'login'){
 elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
     //controlleur de la page welcome ou home
     //la variable ci-dessous permet de definir le type de query ds le model
-    $_SESSION['choice'] = 'welcome';
+    // $_SESSION['choice'] = 'welcome';
     $_SESSION['bodytag'] = '';
     require "controller/welcomecontroller.php";
 
@@ -23,7 +23,8 @@ elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
 
 elseif($urlArray[0] =='edit') {
     //la variable ci-dessous permet de definir le type de query ds le model
-    $_SESSION['choice'] = 'edit';
+
+    // $_SESSION['choice'] = 'edit';
     //controlleur du module d'édition aussi appelé dashboard
     require "controller/editcontroller.php";
 }
@@ -40,6 +41,11 @@ elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures' OR $urlArray[0]==
     require "controller/consultcontrollerone.php";
     consultOneViewPicker($urlArray[0], $urlArray[1]);
 }
+// elseif($urlArray[0] == 'logout') {
+//     require "controller/logincontroller.php";
+//     logout();
+// }
+
 // LA PARTIE CI-DESSOUS RESTE COMMENTEE JUSQU'A PASSAGE LIVE
 //    else {
 //        require "controller/welcomecontroller.php";

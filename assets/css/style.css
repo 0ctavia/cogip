@@ -1,5 +1,6 @@
 body{
-    height:100%;
+	height:100%;
+	padding-bottom: 100px;
 }
 
 /*PAGE LOGIN */
@@ -38,10 +39,10 @@ body{
 /*--------------*/
 
 footer {
-    position: absolute ;
+    position: fixed ;
     background-color: #f7b36e;
     bottom: 0px;
-    width:100%;
+    width:99%;
     text-align:center;
 }
 
@@ -80,7 +81,7 @@ footer img {
 li a{
 	float: left;
 	color: 73562a;
-	position-height: auto;
+	height: auto;
 	display: block;
 	text-align: center;
 	padding: 3% 2%;
@@ -99,7 +100,8 @@ li a{
 
 #main{
 	 display: grid;
-	 grid-template-columns: repeat(6, 1fr);
+	 grid-template-columns: repeat(5, 1fr);
+	 grid-auto-columns: 1fr;
 	 grid-auto-rows: repeat(1, 1fr);
 }
 .text{
@@ -115,7 +117,7 @@ li a{
 .admin{
 	border-style: solid;
 	border-color: black;
-	grid-columns: 6
+	grid-column: 6;
 
 }
 button{
@@ -159,6 +161,7 @@ tr{
 .ContactviewAll{
 		text-align: center;
 	}
-
-
+/* button{
+	display: inline-block;
+} */
 

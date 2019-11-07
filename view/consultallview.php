@@ -25,13 +25,10 @@ foreach($list as $element){
         }
         elseif ($key == 'number'){
             echo "<td><a href=".$choice."/".$element['id'].">".$element['number']."</a></td>";
-
         }
-
         elseif ($key != 'id') { 
             echo "<td>$value</td>";
         }
-
     }
     echo "</tr>";
 }
