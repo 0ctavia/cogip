@@ -1,11 +1,10 @@
 <?php
-//"Bienvenue sur le controller pour consulter la banque de données"
-
+//La variable $choice est un placeholder pour la partie de l'URL qui a été récurpérée par le router. Cette variable va permettre de définir quoi charger comme model / requete SQL.
 function consultViewPicker($choice){
 	require "database/connection.php";
 
 	// Changement de model pour une seul view
-
+    //la variable $list va récupérer la query SQL
 	$list;
 
 	switch($choice){
@@ -30,15 +29,14 @@ function consultViewPicker($choice){
 			$list = getTypedCompanies('client');
 			break;
 	}
-	require "view/consultallview.php";
+    //la variable $choice, donc provenant de l'URL est ensuite injectée dans la view
+    require "view/consultallview.php";
 };
-//Controller pour les pages ou l'on peut consulter la banque de données
-//Doit appeler soit un view ALL, soit une view detail ou one
-//en fonction de ce qui est cliqué comme information
-
+//fonction ci-dessous va permettre de traduire le nom des colonnes dans les tableaux dans lesquels sont placés les résultats des requêtes SQL
+//ceci formera l'entête du tableau d'affichage des résultats
 function addColumn($list){
 	if (!empty($list)){
-		foreach($list[0] as $key => $value){
+        foreach($list[0] as $key => $value){
 			switch ($key){
 				case 'name':
 				case 'company':

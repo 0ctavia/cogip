@@ -14,7 +14,7 @@
 	<?php if ($_SESSION['mode'] == 'winner' OR $_SESSION['mode'] == 'admin') {?>
 	<section class="admin">
 		<img class="acceuil-img" src="assets/images/ranu.jpeg"/>
-		<a type="submit" class="lien-admin" href="#">Module administrateur</a>
+		<a type="submit" class="lien-admin" href="edit">Module administrateur</a>
 	</section>
 	<?php } ?>
 			
