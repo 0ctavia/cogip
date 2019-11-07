@@ -3,11 +3,8 @@ session_start();
 
 $url = $_GET['id'];
 $urlArray = explode('/', $url);
-//echo $url;
-//var_dump($urlArray);
 
-// controller page Login 
-
+//LA PARTIE CI-DESSOUS RESTE COMMENTEE JUSQU'AU PASSAGE LIVE
 //if ($_SESSION['isLoggedIn'] == TRUE){
 if($urlArray[0] == 'login'){
     $_SESSION['bodytag'] ='login';
@@ -16,6 +13,8 @@ if($urlArray[0] == 'login'){
 }
 
 elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
+    //controlleur de la page welcome ou home
+    //la variable ci-dessous permet de definir le type de query ds le model
     $_SESSION['choice'] = 'welcome';
     $_SESSION['bodytag'] = '';
     require "controller/welcomecontroller.php";
@@ -23,7 +22,9 @@ elseif($urlArray[0] =='home' OR $urlArray[0] == 'welcome'){
 }
 
 elseif($urlArray[0] =='edit') {
+    //controlleur du module d'édition aussi appelé dashboard
     require "controller/editcontroller.php";
+    //la variable ci-dessous permet de definir le type de query ds le model
     $_SESSION['choice'] = 'edit';
 
 }
@@ -34,8 +35,7 @@ elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures' OR $urlArray[0]==
     require "controller/consultcontroller.php";
     consultViewPicker($urlArray[0]);
 }
-//le controlleur de consultation de la db va lui aussi employer le $urlArray afin de chopper les views nécessaires
-
+// LA PARTIE CI-DESSOUS RESTE COMMENTEE JUSQU'A PASSAGE LIVE
 //    else {
 //        require "controller/welcomecontroller.php";
 //    }
