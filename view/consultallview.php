@@ -1,9 +1,7 @@
 <?php 
 	include "headerview.php";
 	include "navbarview.php";
-?>
-	<head>
-	
+?>	
 		<h1 class="ContactviewAll" >COGiP: <?= ucfirst($choice)?></h1>
 
 		<table>
@@ -25,3 +23,4 @@
 			</tbody>
 	
 		</table>
+<?php include "footerview.php"; ?>

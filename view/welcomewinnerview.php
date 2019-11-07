@@ -85,7 +85,7 @@
 	</section>
 </main>
 
-</body>
-<!-- <?php include "footerview.php"; ?> -->
+<!-- </body> -->
+<?php include "footerview.php"; ?>
 	
 </html>	
