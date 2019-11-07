@@ -4,19 +4,14 @@
 ?>
 <main id="main">
 	<section class="text">
-		<h1>Bienvenue <?php echo $_SESSION['username'];?></h1>
+		<h1>Administration</h1>
 		<p>
-			Vous vous trouvez dans l'interface de la banque de données de la COGIP, 
-			consultez les éléments les plus récents ci-dessous ou utilisez le menu
-			ci dessus pour accéder à une liste de tous les éléments.
+            <?php echo $_SESSION['username']; ?>, vous êtes un <?php echo $_SESSION['mode']; ?>.
+			Vous vous trouvez dans l'interface administrative de la COGIP, 
+			consultez les éléments les plus récents ci-dessous pour créer, modifier, supprimer ou utilisez le menu
+			ci dessus pour accéder à une liste de tous les éléments et quitter cette interface.
 		</p>
 	</section>
-	<?php if ($_SESSION['mode'] == 'winner' OR $_SESSION['mode'] == 'admin') {?>
-	<section class="admin">
-		<img class="acceuil-img" src="assets/images/ranu.jpeg"/>
-		<a type="submit" class="lien-admin" href="edit">Module administrateur</a>
-	</section>
-	<?php } ?>
 			
 	<section class="tableaux">
 		<section class="tabFactures">	
@@ -34,9 +29,17 @@
 						echo "<tr>";
 						foreach($invoice as $key => $value){
 
-							if ($key != 'id') echo "<td>$value</td>";
-						}
-						echo '</tr>';
+							if ($key != 'id') {
+                                echo "<td>$value</td>";
+                                
+                            }
+                        }
+                        if ($_SESSION['mode'] == 'winner') {
+                            echo "<td>edit</td>";
+                            echo "<td>delete</td>";
+                        }
+                        echo '</tr>';
+                        
 					}?>
 				</tbody>
 			</table>
