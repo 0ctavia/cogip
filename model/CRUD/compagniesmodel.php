@@ -90,7 +90,17 @@ SQL;
     return $rows;
 }
 
-// echo "<pre>";
-// print_r(getAllCompanies());
-// echo "</pre>";
+function getCompany($chosenId){
+/*
+ * Cette fonction va rechercher une facture dans la banque de donnée
+ * L'id recherchée est normalement fournie grace au catch d'url
+ * Doit retourner une liste détaillant la facture */
+
+    //connection db
+    $conn = dbconnect();
+
+    //Préparer la requête SQL
+   /* $sql = <<<SQL
+        SELECT */
+}
 ?>

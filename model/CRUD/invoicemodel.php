@@ -60,7 +60,7 @@ SQL;
     return $rows;
 }
 
-function getInvoice($id){
+function getInvoice($chosenId){
     /*
         Cette fonction va rechercher une facture dans la banque de donnée
         $id est la facture recherchée dans la banque de donnée
@@ -82,13 +82,14 @@ SQL;
     $stmt = $conn->prepare($sql);
 
     //éviter injection sql
-    $stmt->bind_param('i', $id);
+    $stmt->bind_param('i', $chosenId);
 
     //exécute et récupération des données
     $stmt->execute();
     $data = $stmt->get_result();
 
     $invoice = $data->fetch_assoc();
+    //creation de l'array vide
     if (!empty($invoice)){
         $result = array(
             'id' => '',
@@ -105,7 +106,7 @@ SQL;
                 'email' => ''
             )
         );
-        
+        //placer les valeurs récupérées de query au bon endroit dans l'array        
         foreach($invoice as $key => $value){
             switch ($key) {
                 case 'name':

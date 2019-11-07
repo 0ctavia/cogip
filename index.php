@@ -37,7 +37,8 @@ elseif((empty($urlArray[1])) AND ($urlArray[0] =='compagnies' OR $urlArray[0]=='
 
 elseif($urlArray[0] =='compagnies' OR $urlArray[0]=='factures' OR $urlArray[0]=='contacts' OR $urlArray[0]=='clients' OR $urlArray[0]=='fournisseurs') {
     $_SESSION['bodytag']="";
-    echo $urlArray[0] ."  " . $urlArray[1];
+    require "controller/consultcontrollerone.php";
+    consultOneViewPicker($urlArray[0], $urlArray[1]);
 }
 // LA PARTIE CI-DESSOUS RESTE COMMENTEE JUSQU'A PASSAGE LIVE
 //    else {
