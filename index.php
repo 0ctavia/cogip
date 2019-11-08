@@ -25,6 +25,12 @@ elseif($urlArray[0] =='edit') {
 
     //controlleur du module d'édition aussi appelé dashboard
     require "controller/editcontroller.php";
+    if($urlArray[1]== 'newinvoice' OR $urlArray[1]=='newcontact' OR $urlArray[1]=='newcompany' OR $urlArray[1]=='newuser'){
+        prepareView($urlArray[1]);
+    }
+    else {
+        prepareDashboard();
+    }
 }
 
 elseif((empty($urlArray[1])) AND ($urlArray[0] =='compagnies' OR $urlArray[0]=='factures' OR $urlArray[0]=='contacts' OR $urlArray[0]=='clients' OR $urlArray[0]=='fournisseurs')) {
