@@ -75,14 +75,6 @@ function validatePhone($type_phone){
 		}
 }
 
-//Formulaire a flitrer
-
-function fullsanitize($table){
-
-	foreach($table as $value){
-		
-		switch($value){
-			case '
 // FACTURES à créer?
 
 
