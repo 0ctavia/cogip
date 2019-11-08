@@ -12,7 +12,7 @@
 			ci dessus pour accéder à une liste de tous les éléments et quitter cette interface.
 		</p>
 	</section>
-	<section>
+	<section class="create">
 		<button type="submit">nouvelle facture</button>
 		<button type="submit">nouvelle compagnie</button>
 		<button type="submit">nouveau contact</button>
@@ -25,7 +25,7 @@
 	</section>
 			
 	<section class="tableaux">
-		<section class="tabFactures">	
+		<section>	
 			<table>
 				<caption>Factures</caption>
 				<thead>
@@ -45,17 +45,17 @@
                                 
                             }
                         }
-                        if ($_SESSION['mode'] == 'winner') {
-                            echo "<td>edit</td>";
-                            echo "<td>delete</td>";
-                        }
-                        echo '</tr>';
+                        if ($_SESSION['mode'] == 'winner') { ?>
+                            <td>éditer</td>
+                            <td>suprimmer</td>
+                        <?php } ?>
+                        </tr>
                         
-					}?>
+					<?php } ?>
 				</tbody>
 			</table>
 		</section>
-		<section class="tabCompagnie">	
+		<section>	
 			<table>
 				<caption>Compagnie</caption>
 				<thead>	
@@ -70,13 +70,18 @@
 						foreach ($company as $key => $value) {
 							if ($key != 'id') echo "<td>$value</td>";
 						}
-						echo "</tr>";
-					}?>
+						if ($_SESSION['mode'] == 'winner') { ?>
+                            <td>éditer</td>
+                            <td>suprimmer</td>
+                        <?php } ?>
+                        </tr>
+                        
+					<?php } ?>
 
 				</tbody>
 			</table>
 		</section>
-		<section class="tabContacts">
+		<section>
 			<table>
 				<caption>Contacts</caption>
 				<thead>
@@ -91,11 +96,39 @@
 						foreach ($contact as $key => $value) {
 							if ($key != 'id') echo "<td>$value</td>";
 						}
-						echo "</tr>";
-					}?>
+						if ($_SESSION['mode'] == 'winner') { ?>
+                            <td>éditer</td>
+                            <td>suprimmer</td>
+                        <?php } ?>
+                        </tr>
+                        
+					<?php } ?>
 				</tbody>
 			</table>
 		</section>
+		<?php if($_SESSION['mode'] == 'winner') { ?>
+			<section>
+				<table>
+					<caption>utilisateurs</caption>
+					<thead>
+						<th>Nom</th>
+						<th>Accessibilité</th>
+					</thead>
+					<tbody>
+						<?php foreach($userList as $user){
+							echo "<tr>";
+							foreach ($user as $key => $value) {
+								if ($key != 'id') echo "<td>$value</td>";
+							} ?>
+                            <td>éditer</td>
+                            <td>suprimmer</td>
+                        	</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</section>
+		<?php } ?>
+			
 	</section>
 </main>
 

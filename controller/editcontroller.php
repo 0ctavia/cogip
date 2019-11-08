@@ -9,16 +9,14 @@ require "database/connection.php";
 require "model/CRUD/invoicemodel.php";
 require "model/CRUD/compagniesmodel.php";
 require "model/CRUD/contactmodel.php";
+require "model/CRUD/usermodel.php";
 
 $invoiceList = getLimitedInvoices();
 $companyList = getLimitedCompanies();
 $contactList = getLimitedContacts();
+if ($_SESSION['mode'] == 'winner') $userList = getAllUsers();
 
 require "view/dashboardview.php";
 
-// if ($type = 'winner') {
-
-//     require 'view/edit/dashboard.php';
-// }
 //il faut pouvoir gérer quels modules d'édition sont disponibles (invoice, compagnie, contacts)
 //?>
