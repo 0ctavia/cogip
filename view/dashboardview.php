@@ -6,18 +6,18 @@
 	<section class="text">
 		<h1>Administration</h1>
 		<p>
-            <?php echo $_SESSION['username']; ?>, vous êtes un <?php echo $_SESSION['mode']; ?>.
+            <?php echo $_SESSION['username']; ?>, vous êtes un <?php echo $usertype; ?>.
 			Vous vous trouvez dans l'interface administrative de la COGIP, 
 			consultez les éléments les plus récents ci-dessous pour créer, modifier, supprimer ou utilisez le menu
 			ci dessus pour accéder à une liste de tous les éléments et quitter cette interface.
 		</p>
 	</section>
-	<section>
+	<section class="create">
 		<button type="submit">nouvelle facture</button>
 		<button type="submit">nouvelle compagnie</button>
 		<button type="submit">nouveau contact</button>
 		<?php
-			if ($_SESSION['mode'] == 'winner') { ?>
+			if ($usertype == 'winner') { ?>
 				<button type="submit">nouveau utilisateur</button>
 			<?php }
 			
@@ -25,7 +25,7 @@
 	</section>
 			
 	<section class="tableaux">
-		<section class="tabFactures">	
+		<section>	
 			<table>
 				<caption>Factures</caption>
 				<thead>
@@ -45,17 +45,17 @@
                                 
                             }
                         }
-                        if ($_SESSION['mode'] == 'winner') {
-                            echo "<td>edit</td>";
-                            echo "<td>delete</td>";
-                        }
-                        echo '</tr>';
+                        if ($usertype == 'winner') { ?>
+                            <td>éditer</td>
+                            <td><a href="delete/facture/<?php echo $invoice['id']?>">suprimmer</a></td>
+                        <?php } ?>
+                        </tr>
                         
-					}?>
+					<?php } ?>
 				</tbody>
 			</table>
 		</section>
-		<section class="tabCompagnie">	
+		<section>	
 			<table>
 				<caption>Compagnie</caption>
 				<thead>	
@@ -70,13 +70,18 @@
 						foreach ($company as $key => $value) {
 							if ($key != 'id') echo "<td>$value</td>";
 						}
-						echo "</tr>";
-					}?>
+						if ($usertype == 'winner') { ?>
+                            <td>éditer</td>
+                            <td><a href="delete/compagnie/<?php echo $company['id']?>">suprimmer</a></td>
+                        <?php } ?>
+                        </tr>
+                        
+					<?php } ?>
 
 				</tbody>
 			</table>
 		</section>
-		<section class="tabContacts">
+		<section>
 			<table>
 				<caption>Contacts</caption>
 				<thead>
@@ -91,11 +96,39 @@
 						foreach ($contact as $key => $value) {
 							if ($key != 'id') echo "<td>$value</td>";
 						}
-						echo "</tr>";
-					}?>
+						if ($usertype == 'winner') { ?>
+                            <td>éditer</td>
+                            <td><a href="delete/contact/<?php echo $contact['id']?>">suprimmer</a></td>
+                        <?php } ?>
+                        </tr>
+                        
+					<?php } ?>
 				</tbody>
 			</table>
 		</section>
+		<?php if($usertype == 'winner') { ?>
+			<section>
+				<table>
+					<caption>utilisateurs</caption>
+					<thead>
+						<th>Nom</th>
+						<th>Accessibilité</th>
+					</thead>
+					<tbody>
+						<?php foreach($userList as $user){
+							echo "<tr>";
+							foreach ($user as $key => $value) {
+								if ($key != 'id') echo "<td>$value</td>";
+							} ?>
+                            <td>éditer</td>
+                            <td><a href="delete/utilisateur/<?php echo $user['id']?>">suprimmer</a></td>
+                        	</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</section>
+		<?php } ?>
+			
 	</section>
 </main>
 

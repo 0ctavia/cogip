@@ -103,4 +103,16 @@ function getCompany($chosenId){
    /* $sql = <<<SQL
         SELECT */
 }
+
+function deleteCompany($id){
+	$connection = dbconnect();
+	$sql = <<<SQL
+	DELETE FROM company
+    WHERE id = ?
+SQL;
+
+    $stmt= $connection->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
 ?>
