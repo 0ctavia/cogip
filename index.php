@@ -24,19 +24,21 @@ elseif($urlArray[0] =='edit') {
     //la variable ci-dessous permet de definir le type de query ds le model
 
     //controlleur du module d'édition aussi appelé dashboard
+    $_SESSION['bodytag'] = '';
     require "controller/editcontroller.php";
-    if($urlArray[1]== 'newinvoice' OR $urlArray[1]=='newcontact' OR $urlArray[1]=='newcompany' OR $urlArray[1]=='newuser'){
-        prepareView($urlArray[1]);
-    }
-    else {
-        prepareDashboard();
-    }
+    prepareDashboard();
+}
+
+elseif ($urlArray[0]=='newinvoice' OR $urlArray[0]=='newcontact' OR $urlArray[0]=='newcompany' OR $urlArray[0]=='newuser'){
+    $_SESSION['bodytag'] = '';
+    require "controller/editcontroller.php";
+    prepareView($urlArray[0]); 
 }
 
 elseif((empty($urlArray[1])) AND ($urlArray[0] =='compagnies' OR $urlArray[0]=='factures' OR $urlArray[0]=='contacts' OR $urlArray[0]=='clients' OR $urlArray[0]=='fournisseurs')) {
     //envoyer vers le controller de consultation si déjà loggé
     $_SESSION['bodytag']="";
-    require "controller/consultcontroller.php";
+    require "controller/consultcontrollerall.php";
     consultViewPicker($urlArray[0]);
 }
 
