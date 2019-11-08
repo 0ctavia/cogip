@@ -13,12 +13,12 @@
 		</p>
 	</section>
 	<section class="create">
-		<button type="submit">nouvelle facture</button>
-		<button type="submit">nouvelle compagnie</button>
-		<button type="submit">nouveau contact</button>
+		<a href="newinvoice" class="button">nouvelle facture</a>
+		<a href="newcompany" class="button">nouvelle compagnie</a>
+		<a href="newcontact" class="button">nouveau contact</a>
 		<?php
 			if ($usertype == 'winner') { ?>
-				<button type="submit">nouveau utilisateur</button>
+				<a href="newuser" class=>nouvel utilisateur</a>
 			<?php }
 			
 		?>

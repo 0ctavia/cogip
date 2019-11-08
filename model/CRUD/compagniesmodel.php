@@ -98,10 +98,6 @@ function getCompany($chosenId){
 
     //connection db
     $conn = dbconnect();
-
-    //Préparer la requête SQL
-   /* $sql = <<<SQL
-        SELECT */
 }
 
 function deleteCompany($id){
