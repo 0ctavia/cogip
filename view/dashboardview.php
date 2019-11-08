@@ -6,7 +6,7 @@
 	<section class="text">
 		<h1>Administration</h1>
 		<p>
-            <?php echo $_SESSION['username']; ?>, vous êtes un <?php echo $_SESSION['mode']; ?>.
+            <?php echo $_SESSION['username']; ?>, vous êtes un <?php echo $usertype; ?>.
 			Vous vous trouvez dans l'interface administrative de la COGIP, 
 			consultez les éléments les plus récents ci-dessous pour créer, modifier, supprimer ou utilisez le menu
 			ci dessus pour accéder à une liste de tous les éléments et quitter cette interface.
@@ -17,7 +17,7 @@
 		<button type="submit">nouvelle compagnie</button>
 		<button type="submit">nouveau contact</button>
 		<?php
-			if ($_SESSION['mode'] == 'winner') { ?>
+			if ($usertype == 'winner') { ?>
 				<button type="submit">nouveau utilisateur</button>
 			<?php }
 			
@@ -45,9 +45,9 @@
                                 
                             }
                         }
-                        if ($_SESSION['mode'] == 'winner') { ?>
+                        if ($usertype == 'winner') { ?>
                             <td>éditer</td>
-                            <td>suprimmer</td>
+                            <td><a href="delete/facture/<?php echo $invoice['id']?>">suprimmer</a></td>
                         <?php } ?>
                         </tr>
                         
@@ -70,9 +70,9 @@
 						foreach ($company as $key => $value) {
 							if ($key != 'id') echo "<td>$value</td>";
 						}
-						if ($_SESSION['mode'] == 'winner') { ?>
+						if ($usertype == 'winner') { ?>
                             <td>éditer</td>
-                            <td>suprimmer</td>
+                            <td><a href="delete/compagnie/<?php echo $company['id']?>">suprimmer</a></td>
                         <?php } ?>
                         </tr>
                         
@@ -96,9 +96,9 @@
 						foreach ($contact as $key => $value) {
 							if ($key != 'id') echo "<td>$value</td>";
 						}
-						if ($_SESSION['mode'] == 'winner') { ?>
+						if ($usertype == 'winner') { ?>
                             <td>éditer</td>
-                            <td>suprimmer</td>
+                            <td><a href="delete/contact/<?php echo $contact['id']?>">suprimmer</a></td>
                         <?php } ?>
                         </tr>
                         
@@ -106,7 +106,7 @@
 				</tbody>
 			</table>
 		</section>
-		<?php if($_SESSION['mode'] == 'winner') { ?>
+		<?php if($usertype == 'winner') { ?>
 			<section>
 				<table>
 					<caption>utilisateurs</caption>
@@ -121,7 +121,7 @@
 								if ($key != 'id') echo "<td>$value</td>";
 							} ?>
                             <td>éditer</td>
-                            <td>suprimmer</td>
+                            <td><a href="delete/utilisateur/<?php echo $user['id']?>">suprimmer</a></td>
                         	</tr>
 						<?php } ?>
 					</tbody>
