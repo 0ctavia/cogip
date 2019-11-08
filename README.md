@@ -1,5 +1,5 @@
 # Cogip
-Repo pour le projet COGIP dans le cadre des cours de BeCode.org, déployé <a href="www.cogibbecode.000webhostapp.com">ici</a>. Malheureusement le déployement n'a pas réussi et nous avons donc une jolie page statique qui ne fait presque rien.
+Repo pour le projet COGIP dans le cadre des cours de BeCode.org, déployé <a href="cogibbecode.000webhostapp.com">ici</a>. Malheureusement le déployement n'a pas réussi et nous avons donc une jolie page statique qui ne fait presque rien.
 
 Il n'y a donc pas moyen de se connecter avec le nom d'utilisateur de Jean-Christian Ranu ni de Murielle Perrache. 
 
