@@ -127,20 +127,15 @@ SQL;
     
 }
 
+function deleteInvoice($id){
+	$connection = dbconnect();
+	$sql = <<<SQL
+	DELETE FROM invoice
+    WHERE id = ?
+SQL;
 
-// switch ($key){
-//     case 'number':
-//         echo "<th>numéro</th>";
-//     case 'timestamp':
-//         echo "<th>date</th>";
-//     case 'name':
-//     case 'company':
-//         echo "<th>Nom de la compagnie</th>";
-//     case 'vat':
-//         echo "<th>TVA</th>";
-// }
-
-// echo "<pre>";
-// print_r(getInvoice(6));
-// echo "</pre>";
+    $stmt= $connection->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
 ?>

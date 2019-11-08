@@ -60,7 +60,15 @@ SQL;
     return $rows;
 }
 
-// echo "<pre>";
-// print_r(getAllContact());
-// echo "</pre>";
+function deleteContact($id){
+	$connection = dbconnect();
+	$sql = <<<SQL
+	DELETE FROM contact
+    WHERE id = ?
+SQL;
+
+    $stmt= $connection->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
 ?>
