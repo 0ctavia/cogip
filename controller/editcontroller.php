@@ -10,16 +10,16 @@ require "model/CRUD/invoicemodel.php";
 require "model/CRUD/compagniesmodel.php";
 require "model/CRUD/contactmodel.php";
 require "model/CRUD/insertmodel.php";
+require "function/sanitize.php";
 
 $invoiceList = getLimitedInvoices();
 $companyList = getLimitedCompanies();
 $contactList = getLimitedContacts();
 
-require "view/dashboardview.php";
+//require "view/dashboardview.php";
 
 // if ($type = 'winner') {
 
-//     require 'view/edit/dashboard.php';
 // }
 //il faut pouvoir gérer quels modules d'édition sont disponibles (invoice, compagnie, contacts)
 
@@ -31,7 +31,8 @@ $create = "contact"; // variable d'url;
 $companyAll = companyselect();
 $contactAll = contactselect();
 
-require"forms.php";
+require "view/edit/formview.php";
+
 //variable du  formulaire = valeur des inputs
 
 $firstname = filter($_POST["firstname"]);

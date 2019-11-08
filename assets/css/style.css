@@ -165,3 +165,50 @@ tr{
 	display: inline-block;
 } */
 
+
+/* FORMS STYLE
+ *
+ *--------------*/
+
+
+.bodyForm {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+	background-color: #c75c00;
+	padding-bottom:15%;
+
+}
+.hform {
+    grid-column: 2;
+	text-align: center;
+    /* border-radius: 50%;
+    border-color: white;  for logo */
+}
+
+label {
+    margin: 10px;;
+}
+select{
+	margin-top:15px;
+}
+button{
+	position:relative;
+	right:0;
+}
+
+
+.form1 {
+    grid-column: 2;
+    grid-row: 2/3;
+    background-color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+}
+
