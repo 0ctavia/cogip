@@ -12,6 +12,17 @@
 			ci dessus pour accéder à une liste de tous les éléments et quitter cette interface.
 		</p>
 	</section>
+	<section>
+		<button type="submit">nouvelle facture</button>
+		<button type="submit">nouvelle compagnie</button>
+		<button type="submit">nouveau contact</button>
+		<?php
+			if ($_SESSION['mode'] == 'winner') { ?>
+				<button type="submit">nouveau utilisateur</button>
+			<?php }
+			
+		?>
+	</section>
 			
 	<section class="tableaux">
 		<section class="tabFactures">	
